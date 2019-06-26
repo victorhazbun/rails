@@ -37,6 +37,10 @@ module ActiveRecord
         merge! association.scope(nullify: false)
       end
 
+      def initialize_dup(other) # :nodoc:
+        @association = @association.deep_dup
+      end
+
       def target
         @association.target
       end
